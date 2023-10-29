@@ -1,0 +1,5 @@
+{
+  "mixinConfigs": [
+    "wilt.mixins.json"
+  ]
+}

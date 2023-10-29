@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "8.0.0"
+    id 'com.github.weave-mc.weave-gradle' version 'fac948d'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.20-RC'
+}
+
+group = 'op.wawa.wilt'
+version = '1.0'
+
+compileJava.options.encoding = "UTF-8"
+
+configurations {
+    include
+    implementation.extendsFrom(include)
+}
+
+minecraft {
+    version "1.8.9"
+}
+
+repositories {
+    maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
+    mavenCentral()
+}
+
+dependencies {
+    include fileTree(dir: "libs", include: ["*.jar"])
+
+    include group: 'org.yaml', name: 'snakeyaml', version: '2.2'
+    include group: 'org.json', name: 'json', version: '20230618'
+
+    compileOnly 'org.spongepowered:mixin:0.8.5'
+    compileOnly 'org.ow2.asm:asm:9.4'
+    compileOnly 'org.ow2.asm:asm-tree:9.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+shadowJar {
+    archiveClassifier.set("LunarCN")
+    configurations = [project.configurations.include]
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+
+    exclude "native-binaries/**"
+
+    exclude "LICENSE.txt"
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("lunarcn.meta.json") {
+        expand "version": project.version
+    }
+
+    rename "(.+_at.cfg)", "META-INF/\$1"
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+jar.dependsOn(shadowJar)
