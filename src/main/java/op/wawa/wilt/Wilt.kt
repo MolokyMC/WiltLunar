@@ -1,14 +1,14 @@
 package op.wawa.wilt
 
+import op.wawa.wilt.viaforge.ViaForge
 import net.minecraft.client.Minecraft
 import op.wawa.wilt.gui.alt.AltManager
+import op.wawa.wilt.viaforge.gui.AsyncVersionSlider
 import op.wawa.wilt.module.ModuleManager
 import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import org.lwjgl.opengl.Display
-import viamcp.ViaMCP
-import viamcp.utils.JLoggerToLog4j
 import java.io.File
-import java.util.logging.Logger
 
 object Wilt {
     const val MOD_NAME = "WiltLunar"
@@ -16,7 +16,10 @@ object Wilt {
     const val MOD_OWNER = "MolokyMC-Team"
     const val MOD_DEVELOPERS = "WaWa"
 
-    val jLogger: Logger = JLoggerToLog4j(LogManager.getLogger("WiltLunar"))
+    @JvmStatic
+    val logger: Logger = LogManager.getLogger("WiltLunar")
+
+    var asyncSlider: AsyncVersionSlider? = null
 
     @JvmStatic
     val dir = File(Minecraft.getMinecraft().mcDataDir, "WiltLunar")
@@ -26,21 +29,21 @@ object Wilt {
 
     fun startGame(){
         val l = System.currentTimeMillis()
-        jLogger.info("Loading $MOD_NAME $MOD_VERSION, By $MOD_OWNER, Developer $MOD_DEVELOPERS")
+        logger.info("Loading $MOD_NAME $MOD_VERSION, By $MOD_OWNER, Developer $MOD_DEVELOPERS")
         Display.setTitle(Display.getTitle() + " | $MOD_NAME $MOD_VERSION - By $MOD_OWNER")
 
         moduleManager = ModuleManager()
         moduleManager.loadModules()
-        jLogger.info("Modules Loaded.")
+        logger.info("Modules Loaded.")
 
         altManager = AltManager()
-        jLogger.info("AltManager Loaded.")
+        logger.info("AltManager Loaded.")
 
-        ViaMCP.getInstance().start()
-        ViaMCP.getInstance().initAsyncSlider()
-        jLogger.info("ViaLunar Loaded.")
+        ViaForge.initViaVersion()
+        asyncSlider = AsyncVersionSlider(-1, 5, 5, 110, 20)
+        logger.info("ViaLunar Loaded.")
         //ViaMCP.getInstance().version = 340
 
-        jLogger.info("All Loaded. (${System.currentTimeMillis() - l} ms)")
+        logger.info("All Loaded. (${System.currentTimeMillis() - l} ms)")
     }
 }

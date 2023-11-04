@@ -11,11 +11,13 @@
     "MixinEntity",
     "MixinEntityLivingBase",
     "MixinGameSettings",
+    "MixinItemBlock",
     "MixinLilyPad",
     "MixinMinecraft",
     "MixinMultiplayer",
     "MixinNetworkManager",
     "MixinNetworkManagerChInit",
+    "MixinWorld",
     "MixinWorldRenderer"
   ]
 }
