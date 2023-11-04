@@ -15,6 +15,7 @@
     "MixinLilyPad",
     "MixinMinecraft",
     "MixinMultiplayer",
+    "MixinNetHandlerPlayClient",
     "MixinNetworkManager",
     "MixinNetworkManagerChInit",
     "MixinWorld",

@@ -12,7 +12,7 @@ import java.io.File
 
 object Wilt {
     const val MOD_NAME = "WiltLunar"
-    const val MOD_VERSION = "v1.1"
+    const val MOD_VERSION = "v1.2"
     const val MOD_OWNER = "MolokyMC-Team"
     const val MOD_DEVELOPERS = "WaWa"
 

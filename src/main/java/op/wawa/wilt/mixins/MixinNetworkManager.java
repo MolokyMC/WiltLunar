@@ -2,6 +2,7 @@ package op.wawa.wilt.mixins;
 
 import io.netty.channel.*;
 import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S3FPacketCustomPayload;
 import net.raphimc.vialoader.netty.CompressionReorderEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
