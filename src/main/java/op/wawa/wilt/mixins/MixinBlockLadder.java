@@ -1,11 +1,11 @@
 package op.wawa.wilt.mixins;
 
-import de.florianmichael.viaforge.ViaForge;
 import net.minecraft.block.BlockLadder;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import op.wawa.wilt.viaforge.ViaForge;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -27,7 +27,7 @@ public abstract class MixinBlockLadder extends MixinBlock {
         final IBlockState iblockstate = worldIn.getBlockState(pos);
 
         if(iblockstate.getBlock() instanceof BlockLadder) {
-            final float f = de.florianmichael.viaforge.ViaForge.targetVersion.getVersion() <= ViaForge.NATIVE_VERSION.getVersion() ? 0.125f : 0.1875f;
+            final float f = ViaForge.targetVersion.getVersion() <= ViaForge.NATIVE_VERSION.getVersion() ? 0.125f : 0.1875f;
             switch(iblockstate.getValue(FACING)) {
                 case NORTH:
                     this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);

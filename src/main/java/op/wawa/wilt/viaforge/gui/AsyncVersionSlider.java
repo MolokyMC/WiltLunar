@@ -1,13 +1,12 @@
 package op.wawa.wilt.viaforge.gui;
 
-import op.wawa.wilt.viaforge.ViaForge;
-import de.gerrygames.viarewind.protocol.protocol1_7_0_5to1_7_6_10.Protocol1_7_0_5to1_7_6_10;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
 import net.raphimc.vialoader.util.VersionEnum;
 import op.wawa.wilt.protocols.ProtocolCollection;
+import op.wawa.wilt.viaforge.ViaForge;
 
 import java.util.Arrays;
 import java.util.Collections;

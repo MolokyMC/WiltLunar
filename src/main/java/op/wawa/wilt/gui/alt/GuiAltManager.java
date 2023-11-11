@@ -2,14 +2,12 @@ package op.wawa.wilt.gui.alt;
 
 import java.util.Random;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import op.wawa.wilt.interfaces.IMixinWorldRenderer;
+import op.wawa.wilt.mixins.MixinGameSettings;
 import op.wawa.wilt.utils.FontUtils;
 import op.wawa.wilt.utils.RenderUtils;
 import org.lwjgl.input.Keyboard;
@@ -31,11 +29,11 @@ extends GuiScreen {
         switch (button.id) {
             case 0: {
                 if (this.loginThread == null) {
-                    mc.displayGuiScreen((GuiScreen)new GuiMainMenu());
+                    mc.displayGuiScreen((GuiScreen)new GuiOptions(new GuiMainMenu(), mc.gameSettings));
                     break;
                 }
                 if (!this.loginThread.getStatus().equals("Logging in...") && !this.loginThread.getStatus().equals("Do not hit back! Logging in...")) {
-                    mc.displayGuiScreen((GuiScreen)new GuiMainMenu());
+                    mc.displayGuiScreen((GuiScreen)new GuiOptions(new GuiMainMenu(), mc.gameSettings));
                     break;
                 }
                 this.loginThread.setStatus("Do not hit back! Logging in...");

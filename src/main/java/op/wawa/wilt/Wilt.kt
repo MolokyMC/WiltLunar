@@ -39,7 +39,7 @@ object Wilt {
         altManager = AltManager()
         logger.info("AltManager Loaded.")
 
-        ViaForge.initViaVersion()
+        ViaForge.start()
         asyncSlider = AsyncVersionSlider(-1, 5, 5, 110, 20)
         logger.info("ViaLunar Loaded.")
         //ViaMCP.getInstance().version = 340

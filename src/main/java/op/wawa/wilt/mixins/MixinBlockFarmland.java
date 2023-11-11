@@ -1,11 +1,11 @@
 package op.wawa.wilt.mixins;
 
-import de.florianmichael.viaforge.ViaForge;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import op.wawa.wilt.viaforge.ViaForge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 

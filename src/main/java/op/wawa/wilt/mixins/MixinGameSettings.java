@@ -24,15 +24,15 @@ public abstract class MixinGameSettings extends GuiScreen {
 
     @Inject(method = "initGui", at = @At(value="RETURN"))
     public void createButtons(CallbackInfo ci) {
-        this.buttonList.add(new GuiButton(114514, 5, this.height - 38, 20, 20, "Alt"));
-        this.buttonList.add(new GuiButton(114515, 30, this.height - 38, 35, 20, "Multi"));
+        this.buttonList.add(new GuiButton(114514, 5, this.height - 38, 60, 20, "OfflineAlt"));
+        this.buttonList.add(new GuiButton(114515, 5, this.height - 61, 60, 20, "MultiPlayer"));
     }
     @Inject(method = "actionPerformed", at = @At(value = "RETURN"))
     private void actionPerformed(GuiButton button, CallbackInfo info) {
         if (button.id == 114514) {
-            Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new GuiAltManager());
+            Minecraft.getMinecraft().displayGuiScreen(new GuiAltManager());
         } else if (button.id == 114515) {
-            Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new GuiMultiplayer(this));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiMultiplayer(this));
         }
     }
 }
